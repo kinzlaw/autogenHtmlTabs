@@ -13,10 +13,19 @@ def calculate_opposite_color(hex_color):
     # Convert back to hex
     return "#{:02x}{:02x}{:02x}".format(*opposite_rgb)
 
-for i in range(1, 11):
+# Helper function to format the ordinal suffix
+def ordinal_suffix(num):
+    """Return ordinal suffix for a number (1st, 2nd, etc.)."""
+    if 10 <= num % 100 <= 20:
+        suffix = "th"
+    else:
+        suffix = {1: "st", 2: "nd", 3: "rd"}.get(num % 10, "th")
+    return f"{num}{suffix}"
+
+for i in range(1, 16):
     background_color = generate_random_color()
     text_color = calculate_opposite_color(background_color)
-    title = f"I'm the {i}{'st' if i == 1 else 'nd' if i == 2 else 'rd' if i == 3 else 'th'} tab"
+    title = ordinal_suffix(i)
     
     html_content = f"""
     <!DOCTYPE html>
@@ -44,7 +53,8 @@ for i in range(1, 11):
     """
     
     # Save the HTML file
-    with open(f"tab_{i}.html", "w") as file:
+    filename = f"{i:02d}_{title}.html"
+    with open(filename, "w") as file:
         file.write(html_content)
 
-print("HTML files generated successfully.")
+print("15 HTML files generated successfully.")
