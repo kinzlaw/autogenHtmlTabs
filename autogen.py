@@ -23,8 +23,10 @@ def ordinal_suffix(num):
     return f"{num}{suffix}"
 
 for i in range(1, 16):
-    background_color = generate_random_color()
-    text_color = calculate_opposite_color(background_color)
+    #background_color = generate_random_color()
+    background_color = "#555555"
+    #text_color = calculate_opposite_color(background_color)
+    text_color = "#FFFFFF"
     title = ordinal_suffix(i)
     
     html_content = f"""
